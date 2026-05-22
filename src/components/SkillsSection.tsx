@@ -2,9 +2,10 @@ import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import {
   SiPython, SiCplusplus, SiTensorflow, SiKeras, SiScikitlearn, SiNumpy,
-  SiOpencv, SiMysql, SiOracle, SiHtml5, SiCss3, SiJavascript, SiPhp,
+  SiOpencv, SiMysql, SiOracle as SiOracleMaybe, SiHtml5, SiJavascript, SiPhp,
   SiGit, SiGithub, SiDocker, SiStreamlit, SiJupyter,
 } from "react-icons/si";
+import { SiCss3 } from "react-icons/si";
 import { HiSparkles } from "react-icons/hi";
 
 const skillGroups = [

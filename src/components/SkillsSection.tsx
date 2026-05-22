@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import SectionHeading from "./SectionHeading";
 import {
   SiPython, SiCplusplus, SiTensorflow, SiKeras, SiScikitlearn, SiNumpy,
-  SiOpencv, SiMysql, SiOracle as SiOracleMaybe, SiHtml5, SiJavascript, SiPhp,
+  SiOpencv, SiMysql, SiHtml5, SiCss, SiJavascript, SiPhp,
   SiGit, SiGithub, SiDocker, SiStreamlit, SiJupyter,
 } from "react-icons/si";
-import { SiCss3 } from "react-icons/si";
+import { DiDatabase } from "react-icons/di";
 import { HiSparkles } from "react-icons/hi";
 
 const skillGroups = [
@@ -41,14 +41,14 @@ const skillGroups = [
     title: "Databases",
     skills: [
       { name: "MySQL", Icon: SiMysql },
-      { name: "Oracle SQL", Icon: SiOracle },
+      { name: "Oracle SQL", Icon: DiDatabase },
     ],
   },
   {
     title: "Web",
     skills: [
       { name: "HTML", Icon: SiHtml5 },
-      { name: "CSS", Icon: SiCss3 },
+      { name: "CSS", Icon: SiCss },
       { name: "JavaScript", Icon: SiJavascript },
       { name: "PHP", Icon: SiPhp },
     ],

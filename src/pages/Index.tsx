@@ -14,13 +14,18 @@ import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 
 const Index = () => {
-  const [loading, setLoading] = useState(true);
+  // Only show loading screen on first visit of the session
+  const [loading, setLoading] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return sessionStorage.getItem("nk_loaded") !== "1";
+  });
 
   useEffect(() => {
     if (loading) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
+      sessionStorage.setItem("nk_loaded", "1");
     }
   }, [loading]);
 

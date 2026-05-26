@@ -120,7 +120,9 @@ class MotionValue<T = any> {
   }
   on(_event: string, cb: (v: T) => void) {
     this.listeners.add(cb);
-    return () => this.listeners.delete(cb);
+    return () => {
+      this.listeners.delete(cb);
+    };
   }
   onChange(cb: (v: T) => void) {
     return this.on("change", cb);

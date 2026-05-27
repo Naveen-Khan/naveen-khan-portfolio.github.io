@@ -130,17 +130,23 @@
   }
   .btn-glow {
     @apply relative overflow-hidden;
+    background-image: linear-gradient(120deg, hsl(var(--gold)) 0%, hsl(var(--amber)) 35%, hsl(var(--copper)) 65%, hsl(var(--crimson)) 100%);
+    background-size: 220% auto;
+    background-position: 0% center;
     box-shadow:
-      0 0 35px -5px hsl(var(--copper) / 0.55),
-      0 0 70px -15px hsl(var(--copper-glow) / 0.3),
-      inset 0 1px 0 0 hsl(var(--copper-glow) / 0.4);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      0 0 35px -5px hsl(var(--amber) / 0.55),
+      0 0 70px -15px hsl(var(--crimson-glow) / 0.32),
+      0 0 110px -25px hsl(var(--purple-ambient) / 0.22),
+      inset 0 1px 0 0 hsl(var(--gold-glow) / 0.45);
+    transition: background-position 0.8s ease, box-shadow 0.5s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .btn-glow:hover {
+    background-position: 100% center;
     box-shadow:
-      0 0 50px -3px hsl(var(--copper) / 0.7),
-      0 0 100px -8px hsl(var(--copper-glow) / 0.4),
-      inset 0 1px 0 0 hsl(var(--copper-glow) / 0.6);
+      0 0 55px -3px hsl(var(--gold-glow) / 0.7),
+      0 0 110px -8px hsl(var(--amber) / 0.45),
+      0 0 150px -20px hsl(var(--crimson) / 0.35),
+      inset 0 1px 0 0 hsl(var(--gold-glow) / 0.7);
     transform: translateY(-2px);
   }
   .card-hover-glow {
@@ -148,10 +154,11 @@
   }
   .card-hover-glow:hover {
     box-shadow:
-      0 10px 40px -10px hsl(var(--copper) / 0.4),
-      0 0 80px -20px hsl(var(--copper-glow) / 0.25),
-      inset 0 1px 0 0 hsl(var(--copper-glow) / 0.2);
-    border-color: hsl(var(--copper) / 0.55);
+      0 10px 40px -10px hsl(var(--copper) / 0.45),
+      0 0 80px -20px hsl(var(--amber) / 0.3),
+      0 0 130px -30px hsl(var(--purple-ambient) / 0.22),
+      inset 0 1px 0 0 hsl(var(--gold-glow) / 0.25);
+    border-color: hsl(var(--gold-glow) / 0.55);
     transform: translateY(-4px);
   }
   .section-container {

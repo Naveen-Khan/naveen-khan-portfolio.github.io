@@ -44,6 +44,16 @@
     --bronze: 30 55% 42%;
     --cocoa: 20 25% 12%;
 
+    /* Cinematic multi-color accents */
+    --gold: 42 85% 60%;
+    --gold-glow: 45 95% 70%;
+    --amber: 35 95% 58%;
+    --orange-glow: 20 95% 58%;
+    --crimson: 358 70% 50%;
+    --crimson-glow: 5 80% 60%;
+    --purple-ambient: 270 50% 45%;
+    --purple-glow: 280 70% 65%;
+
     --glass-bg: 24 18% 7%;
     --glass-border: 25 30% 22%;
 
@@ -63,9 +73,11 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     background:
-      radial-gradient(ellipse 90% 60% at 50% 0%, hsl(25 78% 55% / 0.08) 0%, transparent 55%),
-      radial-gradient(ellipse 60% 40% at 90% 100%, hsl(30 55% 42% / 0.06) 0%, transparent 50%),
-      radial-gradient(ellipse 50% 50% at 0% 60%, hsl(20 40% 20% / 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 80% 55% at 50% 0%, hsl(var(--orange-glow) / 0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 55% 45% at 90% 20%, hsl(var(--crimson) / 0.07) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 50% at 5% 35%, hsl(var(--purple-ambient) / 0.09) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 50% at 85% 95%, hsl(var(--gold) / 0.07) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 50% at 15% 100%, hsl(var(--bronze) / 0.08) 0%, transparent 55%),
       hsl(var(--background));
     overflow-x: hidden;
   }
@@ -84,23 +96,31 @@
   .glow-border {
     box-shadow:
       0 0 30px -8px hsl(var(--copper) / 0.45),
-      0 0 80px -20px hsl(var(--copper-glow) / 0.2),
-      inset 0 1px 0 0 hsl(var(--copper-glow) / 0.15);
-    border-color: hsl(var(--copper) / 0.4);
+      0 0 60px -16px hsl(var(--amber) / 0.28),
+      0 0 100px -28px hsl(var(--purple-ambient) / 0.18),
+      inset 0 1px 0 0 hsl(var(--gold-glow) / 0.18);
+    border-color: hsl(var(--copper) / 0.45);
   }
   .glow-text {
     text-shadow:
       0 0 30px hsl(var(--copper-glow) / 0.55),
-      0 0 60px hsl(var(--copper) / 0.3),
+      0 0 60px hsl(var(--orange-glow) / 0.32),
+      0 0 90px hsl(var(--crimson-glow) / 0.18),
       0 2px 0 hsl(20 30% 4% / 0.8);
   }
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(30 90% 75%), hsl(25 78% 55%) 50%, hsl(30 55% 42%));
+    background-image: linear-gradient(135deg, hsl(var(--gold-glow)) 0%, hsl(var(--copper-glow)) 40%, hsl(var(--crimson-glow)) 100%);
   }
   .gradient-text-warm {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(180deg, hsl(35 90% 80%) 0%, hsl(25 78% 55%) 60%, hsl(20 50% 30%) 100%);
+    background-image: linear-gradient(180deg, hsl(var(--gold-glow)) 0%, hsl(var(--amber)) 35%, hsl(var(--copper)) 70%, hsl(var(--crimson)) 100%);
+  }
+  .gradient-text-cinematic {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, hsl(var(--gold-glow)) 0%, hsl(var(--amber)) 25%, hsl(var(--copper-glow)) 50%, hsl(var(--crimson-glow)) 75%, hsl(var(--purple-glow)) 100%);
+    background-size: 250% auto;
+    animation: shine 8s linear infinite;
   }
   .neural-grid {
     background-image:
@@ -110,17 +130,23 @@
   }
   .btn-glow {
     @apply relative overflow-hidden;
+    background-image: linear-gradient(120deg, hsl(var(--gold)) 0%, hsl(var(--amber)) 35%, hsl(var(--copper)) 65%, hsl(var(--crimson)) 100%);
+    background-size: 220% auto;
+    background-position: 0% center;
     box-shadow:
-      0 0 35px -5px hsl(var(--copper) / 0.55),
-      0 0 70px -15px hsl(var(--copper-glow) / 0.3),
-      inset 0 1px 0 0 hsl(var(--copper-glow) / 0.4);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      0 0 35px -5px hsl(var(--amber) / 0.55),
+      0 0 70px -15px hsl(var(--crimson-glow) / 0.32),
+      0 0 110px -25px hsl(var(--purple-ambient) / 0.22),
+      inset 0 1px 0 0 hsl(var(--gold-glow) / 0.45);
+    transition: background-position 0.8s ease, box-shadow 0.5s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .btn-glow:hover {
+    background-position: 100% center;
     box-shadow:
-      0 0 50px -3px hsl(var(--copper) / 0.7),
-      0 0 100px -8px hsl(var(--copper-glow) / 0.4),
-      inset 0 1px 0 0 hsl(var(--copper-glow) / 0.6);
+      0 0 55px -3px hsl(var(--gold-glow) / 0.7),
+      0 0 110px -8px hsl(var(--amber) / 0.45),
+      0 0 150px -20px hsl(var(--crimson) / 0.35),
+      inset 0 1px 0 0 hsl(var(--gold-glow) / 0.7);
     transform: translateY(-2px);
   }
   .card-hover-glow {
@@ -128,10 +154,11 @@
   }
   .card-hover-glow:hover {
     box-shadow:
-      0 10px 40px -10px hsl(var(--copper) / 0.4),
-      0 0 80px -20px hsl(var(--copper-glow) / 0.25),
-      inset 0 1px 0 0 hsl(var(--copper-glow) / 0.2);
-    border-color: hsl(var(--copper) / 0.55);
+      0 10px 40px -10px hsl(var(--copper) / 0.45),
+      0 0 80px -20px hsl(var(--amber) / 0.3),
+      0 0 130px -30px hsl(var(--purple-ambient) / 0.22),
+      inset 0 1px 0 0 hsl(var(--gold-glow) / 0.25);
+    border-color: hsl(var(--gold-glow) / 0.55);
     transform: translateY(-4px);
   }
   .section-container {
@@ -246,4 +273,67 @@
 }
 .animate-hero-reveal {
   animation: hero-reveal 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* ===== Cinematic ambient lighting layer ===== */
+.ambient-orb {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(90px);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+.ambient-orb-amber  { background: radial-gradient(circle, hsl(var(--amber) / 0.55) 0%, transparent 70%); }
+.ambient-orb-crimson{ background: radial-gradient(circle, hsl(var(--crimson) / 0.45) 0%, transparent 70%); }
+.ambient-orb-purple { background: radial-gradient(circle, hsl(var(--purple-ambient) / 0.5) 0%, transparent 70%); }
+.ambient-orb-gold   { background: radial-gradient(circle, hsl(var(--gold) / 0.5) 0%, transparent 70%); }
+.ambient-orb-copper { background: radial-gradient(circle, hsl(var(--copper) / 0.55) 0%, transparent 70%); }
+
+@keyframes orb-drift {
+  0%, 100% { transform: translate3d(0,0,0) scale(1); }
+  33%      { transform: translate3d(60px,-40px,0) scale(1.12); }
+  66%      { transform: translate3d(-50px,50px,0) scale(0.92); }
+}
+.animate-orb-drift { animation: orb-drift 22s ease-in-out infinite; }
+
+/* Animated mesh gradient background overlay */
+.mesh-gradient {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(at 20% 25%, hsl(var(--amber) / 0.18) 0px, transparent 45%),
+    radial-gradient(at 80% 15%, hsl(var(--crimson) / 0.14) 0px, transparent 45%),
+    radial-gradient(at 75% 80%, hsl(var(--gold) / 0.16) 0px, transparent 45%),
+    radial-gradient(at 15% 85%, hsl(var(--purple-ambient) / 0.18) 0px, transparent 45%);
+  filter: blur(40px);
+  opacity: 0.7;
+  animation: mesh-shift 18s ease-in-out infinite alternate;
+}
+@keyframes mesh-shift {
+  0%   { transform: scale(1) translate(0,0); }
+  100% { transform: scale(1.15) translate(-2%,-3%); }
+}
+
+/* Gradient border (animated) */
+.gradient-border {
+  position: relative;
+  background-clip: padding-box;
+  border: 1px solid transparent;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute; inset: 0;
+  padding: 1px; border-radius: inherit;
+  background: linear-gradient(120deg,
+    hsl(var(--gold-glow) / 0.6),
+    hsl(var(--amber) / 0.4),
+    hsl(var(--copper) / 0.55),
+    hsl(var(--crimson-glow) / 0.4),
+    hsl(var(--purple-glow) / 0.5));
+  background-size: 250% 250%;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: shine 6s linear infinite;
+  pointer-events: none;
 }

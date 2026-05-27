@@ -96,23 +96,31 @@
   .glow-border {
     box-shadow:
       0 0 30px -8px hsl(var(--copper) / 0.45),
-      0 0 80px -20px hsl(var(--copper-glow) / 0.2),
-      inset 0 1px 0 0 hsl(var(--copper-glow) / 0.15);
-    border-color: hsl(var(--copper) / 0.4);
+      0 0 60px -16px hsl(var(--amber) / 0.28),
+      0 0 100px -28px hsl(var(--purple-ambient) / 0.18),
+      inset 0 1px 0 0 hsl(var(--gold-glow) / 0.18);
+    border-color: hsl(var(--copper) / 0.45);
   }
   .glow-text {
     text-shadow:
       0 0 30px hsl(var(--copper-glow) / 0.55),
-      0 0 60px hsl(var(--copper) / 0.3),
+      0 0 60px hsl(var(--orange-glow) / 0.32),
+      0 0 90px hsl(var(--crimson-glow) / 0.18),
       0 2px 0 hsl(20 30% 4% / 0.8);
   }
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(30 90% 75%), hsl(25 78% 55%) 50%, hsl(30 55% 42%));
+    background-image: linear-gradient(135deg, hsl(var(--gold-glow)) 0%, hsl(var(--copper-glow)) 40%, hsl(var(--crimson-glow)) 100%);
   }
   .gradient-text-warm {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(180deg, hsl(35 90% 80%) 0%, hsl(25 78% 55%) 60%, hsl(20 50% 30%) 100%);
+    background-image: linear-gradient(180deg, hsl(var(--gold-glow)) 0%, hsl(var(--amber)) 35%, hsl(var(--copper)) 70%, hsl(var(--crimson)) 100%);
+  }
+  .gradient-text-cinematic {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(120deg, hsl(var(--gold-glow)) 0%, hsl(var(--amber)) 25%, hsl(var(--copper-glow)) 50%, hsl(var(--crimson-glow)) 75%, hsl(var(--purple-glow)) 100%);
+    background-size: 250% auto;
+    animation: shine 8s linear infinite;
   }
   .neural-grid {
     background-image:
